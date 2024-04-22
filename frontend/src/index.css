@@ -1,0 +1,51 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700&display=swap");
+/* src/tailwind.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+  }
+  body {
+    font-family: Manrope, sans-serif;
+  }
+  ::-webkit-scrollbar {
+    width: 7px;
+  }
+
+  /* Customize the scrollbar thumb */
+  ::-webkit-scrollbar-thumb {
+    background-color: #808191;
+    border-radius: 4px;
+  }
+}
+@layer utilities {
+  .active-btn {
+    padding: 1rem 1.4375rem;
+    background-color: #475be8;
+    border-radius: 0.75rem;
+
+    color: #fcfcfc;
+  }
+  .btn {
+    padding: 1rem 1.4375rem;
+    color: #808191;
+    background-color: #fcfcfc;
+  }
+  .justify-btwn {
+    @apply flex gap-[0.88rem] justify-between w-[100%];
+  }
+  .button {
+    @apply p-[1rem] flex justify-center text-[#Fcfcfc]  cursor-pointer font-[600] rounded-[1rem] text-center;
+  }
+  .signupPage {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url("assets/signup_background.png");
+  }
+  .input {
+    @apply bg-[#FCFCFC] border border-[#E4E4E4] rounded-[0.375rem] p-[0.625rem] w-full focus:outline-[#475be8];
+  }
+}
