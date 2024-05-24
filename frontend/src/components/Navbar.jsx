@@ -10,7 +10,7 @@ const Navbar = ({ navShown, setnavShown }) => {
 
   const navigate = useNavigate();
   return (
-    <div className="p-[0.9375rem_1.25rem] z-[1000] flex justify-between fixed top-0 w-full bg-[#Fcfcfc]">
+    <div className="p-[0.9375rem_1.25rem] z-[1000] flex justify-between fixed  w-full bg-[#Fcfcfc]">
       {/* Heading */}
       <img
         src={harmburger}
@@ -26,11 +26,11 @@ const Navbar = ({ navShown, setnavShown }) => {
         <h1 className="text-[1.4rem] font-[700] ">Review Tracker</h1>
       </div>
 
-      <div className="flex flex-row-reverse max-md:hidden justify-evenly rounded-[0.5rem] p-[0.625rem] gap-[0.625rem] w-[20.3125rem] bg-[#F4F4F4]">
+      <div className="flex max-md:hidden rounded-[0.5rem]  justify-center items-center p-[0.625rem] gap-[0.625rem] w-[20.3125rem] bg-[#F4F4F4]">
         <input
           type="text"
           placeholder="Search Property, Customer etc"
-          className="input input-bordered w-full bg-inherit text-[#808191] font-[400] text-[0.75rem]"
+          className=" flex w-full bg-inherit text-[#808191] focus:outline-none text-[0.75rem]"
         />
         <img
           src={search}
@@ -39,22 +39,14 @@ const Navbar = ({ navShown, setnavShown }) => {
         />
       </div>
       {/* Profile */}
-      <img
+
+      <div
         src={notification}
         alt="notification"
-        className="w-[1.5rem] h-[1.5rem] md:hidden  cursor-pointer"
+        className="cursor-pointer "
         onClick={() => setDialogDisplay(!dialogDisplay)}
-      />
-      <div className="flex gap-[1.25rem] max-md:hidden items-center">
-        <img
-          src={notification}
-          alt="notification"
-          className="w-[1.5rem] h-[1.5rem] cursor-pointer"
-          onClick={() => setDialogDisplay(!dialogDisplay)}
-        />
-        <div className="flex  flex-col">
-          <p>Abdulrahman Soyooye</p>
-        </div>
+      >
+        Edit Profile
       </div>
     </div>
   );

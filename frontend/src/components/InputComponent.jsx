@@ -14,7 +14,7 @@ const InputComponent = ({
 
       <input
         type={type}
-        className="bg-[#FCFCFC] focus:outline-[#475be8]  rounded-[0.375rem] p-[0.625rem] w-full"
+        className="bg-[#FFFF] border focus:outline-[#475be8]  rounded-[0.375rem] p-[0.625rem] w-full"
         placeholder={`Your ${name}`}
         disabled={EditProfile}
         autoFocus

@@ -3,9 +3,12 @@ import InputComponent from "./InputComponent";
 import { CancelOutlined } from "@mui/icons-material";
 import axios from "axios";
 import { useSession } from "../context/session";
-import { Alert, IconButton } from "@mui/material";
+import { IconButton } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { useDialog } from "../context/Dialog";
 const Dialog = () => {
+  const { dialogDisplay, setDialogDisplay } = useDialog();
+
   const { sessionData } = useSession();
   const id = sessionData;
   const [data, setData] = useState({
@@ -18,16 +21,8 @@ const Dialog = () => {
   });
   const [errorMessage, seterrorMessage] = useState(false);
   const navigate = useNavigate();
-  // const [file, setFile] = useState("");
   const { TechStack } = data;
   const submitData = async () => {
-    // const formData = new FormData();
-    // formData.append("Email", data.Email);
-    // formData.append("Location", data.Location);
-    // formData.append("role", data.Role);
-    // formData.append("TechStack", data.TechStack);
-    // formData.append("Phone", data.Phone);
-    // formData.append("picturePath", file);
     setData({
       Email: "",
       Location: "",
@@ -37,8 +32,8 @@ const Dialog = () => {
       picturePath: "",
     });
     try {
-      var response = await axios.patch(
-        `http://localhost:3001/user/${id}`,
+      await axios.patch(
+        `https://review-tracker-backend.onrender.com/user/${id}`,
         data,
         {
           headers: {
@@ -46,12 +41,11 @@ const Dialog = () => {
           },
         }
       );
-      if (response.status === 201) {
-        navigate("/");
-      }
+      navigate("/");
+      setDialogDisplay(!dialogDisplay);
     } catch (error) {
       console.log(error);
-      seterrorMessage(error.response.data);
+      seterrorMessage({ message: error.response.data, code: error.code });
     }
   };
   const handleChange = (e) => {
@@ -62,16 +56,17 @@ const Dialog = () => {
   };
   return (
     <div
-      className="bg-[#fffefe] rounded-[0.5rem]  p-[1rem] w-full md:w-[50%]  flex flex-col gap-[1.4rem]"
+      className="bg-[#fffefe] rounded-[0.5rem]  p-[1rem] w-full md:w-[70%]  flex flex-col gap-[1.4rem]"
       data-aos="zoom-in"
     >
       <h1 className="font-[600] text-[1.5rem] text-center">
         Enter Your Details
       </h1>
       {errorMessage && (
-        <Alert icon={<CancelOutlined fontSize="inherit" />} severity="error">
-          {errorMessage}
-        </Alert>
+        <div className="text-slate-100 text-center bg-red-600 p-[1rem] rounded-[1rem] flex flex-col">
+          <div className="font-[600]"> {errorMessage.code}</div>
+          <div>{errorMessage.message}</div>
+        </div>
       )}
       <div className="grid grid-cols-2 max-md:grid-cols-1  gap-[2.5rem] ">
         {[

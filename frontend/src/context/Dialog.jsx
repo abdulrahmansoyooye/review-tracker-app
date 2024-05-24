@@ -4,7 +4,7 @@ import { createContext, useContext, useState } from "react";
 export const DialogContext = createContext();
 
 export const DialogProvider = ({ children }) => {
-  const [dialogDisplay, setDialogDisplay] = useState(false);
+  const [dialogDisplay, setDialogDisplay] = useState(true);
 
   return (
     <DialogContext.Provider value={{ dialogDisplay, setDialogDisplay }}>

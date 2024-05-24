@@ -19,7 +19,9 @@ const Settings = () => {
   const deleteUser = async () => {
     try {
       const response = await axios.delete(
-        `http://localhost:3001/user/${id}`,
+        `https://review-tracker-backend.onrender.com
+
+/user/${id}`,
 
         {
           headers: {

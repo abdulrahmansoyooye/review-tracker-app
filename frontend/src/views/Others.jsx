@@ -8,11 +8,14 @@ const Others = () => {
   const [userData, setUserData] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get("http://localhost:3001/user/", {
-        headers: {
-          Authorization: "id",
-        },
-      });
+      const response = await axios.get(
+        "https://review-tracker-backend.onrender.com/user/",
+        {
+          headers: {
+            Authorization: "id",
+          },
+        }
+      );
       setUserData(response.data);
     };
     fetchData();
@@ -25,10 +28,11 @@ const Others = () => {
       </div>
       {/* others */}
       <div className="flex flex-col w-full gap-[1rem]">
-        {userData.map(({ Location, username, role, Phone, Email }) => (
+        {userData.map(({ Location, username, role, Phone, Email }, index) => (
           <>
             <div
-              className="p-[1.25rem] shadow-[#B0B0B0] flex  bg-[#FCFCFC]  rounded-[0.625rem] w-full gap-[1.25rem]"
+              key={`${index}-${Phone}`}
+              className="p-[1.25rem] shadow-[#B0B0B0] flex  bg-[#FCFCFC]  rounded-[0.625rem] w-full gap-[1.25rem] max-lg:flex-col"
               data-aos="fade-up"
             >
               {/* image */}
@@ -36,7 +40,7 @@ const Others = () => {
                 <img
                   src={profilePic}
                   alt="profilepic"
-                  className="w-[15.625rem] rounded-[0.75rem] h-full object-cover"
+                  className="w-[15.625rem] rounded-[0.75rem] h-full object-cover max-lg:w-full"
                 />
               </div>
               {/* Information */}

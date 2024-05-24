@@ -10,7 +10,7 @@ const Reviews = () => {
   const id = sessionData;
   const [fullChart, showFullChart] = useState(false);
   const [user, setuserData] = useState({});
-  const { role } = user;
+  // const { role } = user;
   useEffect(() => {
     const fetchData = async () => {
       const response = await userData(id);
@@ -25,9 +25,9 @@ const Reviews = () => {
         <div>
           <div className="text-[#11142D] font-[600] text-[1.375rem]">
             {" "}
-            {user.username?.toUpperCase()}
+            {user && user.username?.toUpperCase()}
           </div>
-          <p className="text-[#808191] font-[400] ">{role && role}</p>
+          <p className="text-[#808191] font-[400] ">{user && user?.role}</p>
         </div>
       </div>
       <Barchart />

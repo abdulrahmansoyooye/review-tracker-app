@@ -16,7 +16,6 @@ const Profile = () => {
     const fetchData = async () => {
       const response = await userData(id);
       setuserData(response);
-      console.log(response);
     };
     fetchData();
   }, []);

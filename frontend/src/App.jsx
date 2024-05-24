@@ -18,7 +18,7 @@ function App() {
         <Routes>
           <Route path="/user/login" element={<SignIn />} />
           <Route path="/user/register" element={<Signup />} />
-   
+
           <Route
             path="/"
             element={sessionData ? <Layout /> : <Navigate to={"/user/login"} />}
